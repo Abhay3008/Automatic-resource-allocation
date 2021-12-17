@@ -1,0 +1,18 @@
+- hosts: localhost
+  connection: local
+  gather_facts: False 
+  tasks:
+    - name: Create Launch Configuration
+      ec2_lc:
+        region: "ap-south-1"
+        name: "webserver1"
+        image_id: "ami-056cf05d12c9fd647"
+        key_name: "aws"
+        instance_type: "t2.micro"
+        security_groups: "sg-0ceb9cdfdd92ff6b3"
+        volumes:
+          - device_name: /dev/xvda
+            device_type: gp2
+            volume_size: 10
+            delete_on_termination: true
+        instance_monitoring: yes
