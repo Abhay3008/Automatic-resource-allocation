@@ -1,0 +1,14 @@
+- name: Create Launch Configuration
+  ec2_lc:
+    region: "ap-south-1"
+    name: "webserver1"
+    image_id: "ami-00623a7b28cdf2b23"
+    key_name: "aws"
+    instance_type: "t2.micro"
+    security_groups: "sg-0ceb9cdfdd92ff6b3"
+    volumes:
+      - device_name: /dev/xvda
+        device_type: gp2
+        volume_size: 10
+        delete_on_termination: true
+    instance_monitoring: yes
